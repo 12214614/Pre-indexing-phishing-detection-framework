@@ -78,25 +78,7 @@ function App() {
               © 2026 Pre-Indexing Phishing Prevention Framework
             </p>
           </div>
-        </div>        # Terminal 1 — Backend
-        cd /e/pippf-project-updated/phishing_backend/backend
-        E:/pippf-project-updated/.venv/Scripts/python.exe manage.py runserver
-        
-        # Terminal 2 — Frontend
-        cd /e/pippf-project-updated/pippf-project
-        npm start        # Terminal 1 — Backend
-        cd /e/pippf-project-updated/phishing_backend/backend
-        E:/pippf-project-updated/.venv/Scripts/python.exe manage.py runserver
-        
-        # Terminal 2 — Frontend
-        cd /e/pippf-project-updated/pippf-project
-        npm start        # Terminal 1 — Backend
-        cd /e/pippf-project-updated/phishing_backend/backend
-        E:/pippf-project-updated/.venv/Scripts/python.exe manage.py runserver
-        
-        # Terminal 2 — Frontend
-        cd /e/pippf-project-updated/pippf-project
-        npm start
+        </div>
       </footer>
     </div>
   );

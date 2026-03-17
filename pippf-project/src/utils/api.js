@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8001/api/core';
+const BASE_URL = (process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8001/api/core').replace(/\/$/, '');
 
 export const verifyUrl = async (url) => {
   try {

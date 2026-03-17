@@ -3,7 +3,18 @@ Django settings for backend project.
 Development configuration for API usage.
 """
 
+import os
 from pathlib import Path
+
+
+def env_bool(name, default=False):
+    value = os.getenv(name, str(default)).strip().lower()
+    return value in {"1", "true", "yes", "on"}
+
+
+def env_list(name, default=""):
+    value = os.getenv(name, default)
+    return [item.strip() for item in value.split(",") if item.strip()]
 
 # Base Directory
 
@@ -12,11 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security Settings
 
-SECRET_KEY = 'django-insecure-dev-key'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key')
 
-DEBUG = True
+DEBUG = env_bool('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env_list(
+    'DJANGO_ALLOWED_HOSTS',
+    '127.0.0.1,localhost' if DEBUG else ''
+)
+
+ENABLE_CSRF = env_bool('DJANGO_ENABLE_CSRF', not DEBUG)
 
 
 # Installed Apps
@@ -44,7 +60,6 @@ INSTALLED_APPS = [
 
 
 # Middleware
-# CSRF REMOVED for API testing
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -52,14 +67,13 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-
-    # ❌ CSRF DISABLED (for Postman testing)
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if ENABLE_CSRF:
+    MIDDLEWARE.insert(4, 'django.middleware.csrf.CsrfViewMiddleware')
 
 
 # URLs
@@ -131,13 +145,16 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5000",
-]
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = env_bool('DJANGO_CORS_ALLOW_ALL_ORIGINS', DEBUG)
+CORS_ALLOWED_ORIGINS = env_list(
+    'DJANGO_CORS_ALLOWED_ORIGINS',
+    'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5000'
+)
+CSRF_TRUSTED_ORIGINS = env_list(
+    'DJANGO_CSRF_TRUSTED_ORIGINS',
+    'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5000'
+)
+CORS_ALLOW_CREDENTIALS = env_bool('DJANGO_CORS_ALLOW_CREDENTIALS', True)
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",

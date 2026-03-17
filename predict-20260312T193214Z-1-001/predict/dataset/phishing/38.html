@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Credential Phishing</title>
+	<!-- Bootstrap 3 -->
+	<link href="/system/content_files/uploads/2a6/34f/ea-/original/bootstrap-3.css" rel="stylesheet">
+<!-- Specific styles -->
+	<link href="/system/content_files/uploads/10b/757/8b-/original/interactive-education-styles.css" rel="stylesheet">
+<!-- Language Selector -->
+	<link href="/system/content_files/uploads/de8/1c5/91-/original/static-education-language-selector.css" rel="stylesheet">
+<!-- Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&amp;display=swap" rel="stylesheet">
+<!--Arabic font-->
+	<link href="https://use.typekit.net/wgp5bvf.css" rel="stylesheet">
+<!-- CJK -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Noto+Sans+KR:wght@400;700&amp;family=Noto+Sans+SC:wght@400;700&amp;family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet">
+	<style type="text/css">/* Language specific */
+
+            /*Arabic*/
+            div:lang(ar) {
+                font-family: ibm-plex-arabic, 'Tahoma', sans-serif !important;
+            }
+            
+            @media (min-width: 768px) {
+           .col-sm-1:lang(ar), .col-sm-2:lang(ar), .col-sm-3:lang(ar), .col-sm-4:lang(ar), .col-sm-5:lang(ar), .col-sm-6:lang(ar), .col-sm-7:lang(ar), .col-sm-8:lang(ar), .col-sm-9:lang(ar), .col-sm-10:lang(ar), .col-sm-11:lang(ar), .col-sm-12:lang(ar){
+                float: right;
+            }
+         
+            }
+        
+         @media (min-width: 992px) {
+            .col-md-1:lang(ar), .col-md-2:lang(ar), .col-md-3:lang(ar), .col-md-4:lang(ar), .col-md-5:lang(ar), .col-md-6:lang(ar), .col-md-7:lang(ar), .col-md-8:lang(ar), .col-md-9:lang(ar), .col-md-10:lang(ar), .col-md-11:lang(ar), .col-md-12:lang(ar) {
+                float: right;
+        }
+        .card.pull-left:lang(ar) {
+                float: right !important;
+            }
+            
+        .card.pull-right:lang(ar) {
+                float: left !important;
+            }
+        }
+
+@media (max-width: 768px) {
+.card.pull-left {
+    float: none!important;
+}
+}
+            /*CJK*/
+            div:lang(zh-CN), div:lang(zh-TW),div:lang(ja),div:lang(ko) {
+                font-family: 'Noto Sans SC', sans-serif;
+            }
+        /*======================================
+        COMMON CUSTOMIZATION OPTIONS
+        ======================================*/
+        /* Colors: Background/Font */
+        /* Body */
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Body Font */
+            background: #F9FAFC;
+            /* Body Background */
+            color: #444444;
+            /* Font Color */
+        }
+        /* Header Section */
+
+        header {
+            background: #00101D;
+        }
+        
+        /* Language Selector Icon Background Colour */
+        
+        #language-selector .btn:before {
+            background-color: #D9282F;
+        }
+        /* Toggle display of language selector search field */
+        
+        #language-selector .language-selector-search {
+            display: block;
+        }
+        /* Alert Section */
+        
+        .alert-container {
+            background-color: #00101D;
+            color: inherit;
+            border: none;
+        }
+        
+        /* Procedure Section */
+        
+        .procedure p {
+            color: #0F2538;
+        }
+        /* Learn More Section */
+        
+        .learn-more .learn-more-btn {
+            background-color: #EE5E44;
+            color: inherit;
+        }
+        
+        .learn-more {
+            background: #EDEDED;
+            color: inherit;
+        }
+        /* To hide or display the below components, change to 'display: none;' or 'display: block*/
+        
+        #language-selector { display: block;
+        }
+        
+        .navbar-brand img.logo {
+            display: none;
+        }
+        
+        .procedure {
+            display: none;
+        }
+        
+        .learn-more {
+            display: none;
+        }
+        
+        footer {
+            display: none;
+        }
+
+
+        .try-again-container {
+            display: none;
+        }
+
+
+        .start-container, .try-again-container {
+            text-align: center;
+        }
+	</style>
+<script src="/javascripts/jquery-latest.min.js"></script><script src="/javascripts/jquery.periodicalupdater.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $.PeriodicalUpdater('/log_info', {method: 'get', data: {tid: '8c5781c2-7b1e-4035-b1d7-990e269e5380'}, minTimeout: 10000, type: 'text', maxCalls: 30, autoStop: 0});
+</script>
+</head>
+<body>
+<!-- Skip to main content -->
+<div id="skip">
+<a href="#main"><span style="color: rgb(68, 68, 68); background-color: rgb(249, 250, 252); font-size: 1rem;">Приветствую, уважаемый Пар</span></a><img alt="" height="566" id="image-preview" src="https://images.pmeimg8.com/public/user_assets/dd0fd2e6-90f8-4e72-aecb-a47f8e25147d/mar_2024_m_1-0a1d27fd.jpg" style="" width="1277"><img alt="" height="552" id="image-preview" src="https://images.pmeimg8.com/public/user_assets/dd0fd2e6-90f8-4e72-aecb-a47f8e25147d/mar_2024_m_2-adc364ec.jpg" style="" width="1153">
+</div>
+
+<div>
+<img alt="" id="image-preview" src="https://login.phishme.com.au/spa-ckeditor" style="" width="550"><img alt="" height="232" id="image-preview" src="https://images.pmeimg8.com/public/user_assets/dd0fd2e6-90f8-4e72-aecb-a47f8e25147d/mar_2024_m_3-c9537216.jpg" style="" width="1156">
+</div>
+<!-- Collection of all localized titles so they are accordingly displayed in the broweser bar when the corresponding language is enabled -->
+
+<div aria-hidden="true" id="mainTitleInfo" style="display:none">
+<div class="en_content" lang="en">Credential Phishing</div>
+
+<div class="ar_content" lang="ar">التصيّد الاحتيالي لسرقة بيانات الاعتماد</div>
+
+<div class="zh-CN_content" lang="zh-CN">凭证网络钓鱼</div>
+
+<div class="zh-TW_content" lang="zh-TW">憑證授權釣魚</div>
+
+<div class="nl_content" lang="nl">Phishing naar inloggegevens</div>
+
+<div class="fr-CA_content" lang="fr-CA">Hameçonnage d’information d’identification</div>
+
+<div class="fr_content" lang="fr">Vol d’informations d’identification par phishing</div>
+
+<div class="de_content" lang="de">Credential-Phishing</div>
+
+<div class="it_content" lang="it">Phishing di credenziali</div>
+
+<div class="ja_content" lang="ja">認証情報フィッシング</div>
+
+<div class="ko_content" lang="ko">자격 증명 피싱</div>
+
+<div class="pl_content" lang="pl">Ataki typu phishing mające na celu uzyskanie danych logowania</div>
+
+<div class="pt-BR_content" lang="pt-BR">Phishing de credenciais</div>
+
+<div class="pt_content" lang="pt">Phishing de credenciais</div>
+
+<div class="ru_content" lang="ru">Фишинг-атаки для похищения учетных данных</div>
+
+<div class="es-419_content" lang="es-419">Phishing para el robo de credenciales</div>
+
+<div class="es_content" lang="es">Phishing para el robo de credenciales</div>
+
+<div class="tr_content" lang="tr">Kimlik Bilgilerini Çalmaya Yönelik Kimlik Avı</div>
+</div>
+<script src="/system/content_files/uploads/5b8/ee7/1e-/original/jquery-latest.min.js"></script><script src="/system/content_files/uploads/0f7/f7c/90-/original/bootstrap-3.js"></script><script src="/system/content_files/uploads/1e1/ef7/31-/original/static-education-l10n-vanilla.js"></script><script src="/system/content_files/uploads/5cd/382/77-/original/interactive-education.js"></script><script src="/system/content_files/uploads/358/ebf/6c-/original/cofense-quiz.min.js"></script><script src="/system/content_files/uploads/2ea/4c2/d1-/original/quiz-logic.js"></script><script>
+
+
+      //Update the value of customFallbackLanguage to the language you would like to setup as the new fallbackLanguage
+      var customFallbackLanguage = "en";
+        setFallbackLanguage(customFallbackLanguage);
+
+        //Enable/Disable (by setting to 'true' or 'false' the value of broswerLanguageDetection) the detection of the browser language in order to try to find matching content in the eduation*/
+        var broswerLanguageDetection = true;
+        togglebroswerLanguageDetection(broswerLanguageDetection);
+
+$(document).ready(function(){
+        //Set the quiz topic by setting the value of quizTopic to any of the topics available in the list below
+            //bec
+            //credential-phishing
+            //current-events
+            //macros
+            //ransomware
+            //spam-vs-phishing
+            //spear-phishing
+            //sports-and-phishing
+            //tax-phishing
+            //general
+        var quizTopic = "credential-phishing";
+        setTopic(quizTopic);
+
+        //Se the number of questions in the quiz by setting the value of the numberOfQuestions to your desired number of questions. If you more questions than available, all the questions available for the chosen topic will be used
+        var numberOfQuestions = 4;
+        setNumberofQuestions(numberOfQuestions);
+ });
+    </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava v vaš račun - eBay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <div class="logo">
+                <img src="slike/ebay-logo.png" alt="eBay Logo" class="ebay-logo-img">
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-and-image-wrapper">
+                <div class="login-box">
+
+                    <div id="email-step">
+                        <h1>Sign in to your account</h1>
+
+                        <div class="registration-options">
+                            <span class="new-to-ebay">New to eBay?</span>
+                            <a href="#" class="create-account-link" onclick="showRegistrationStep(event) ">Create account</a>
+                        </div>
+
+                        <form onsubmit="handleContinue(event)">
+                            <input type="text" placeholder="Email or username" id="username-input" required>
+                            <button type="submit" class="continue-btn">Continue</button>
+                        </form>
+
+                        <div class="separator">
+                            <span class="or-text">or</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button class="social-btn google-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google icon">
+                                <span class="text-wrapper">Continue with Google</span>
+                            </button>
+                            <button class="social-btn facebook-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook icon">
+                                <span class="text-wrapper">Continue with Facebook</span>
+                            </button>
+                            <button class="social-btn apple-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple icon">
+                                <span class="text-wrapper">Continue with Apple</span>
+                            </button>
+                        </div>
+
+                        <div class="stay-signed-in centered-signed-in">
+                            <input type="checkbox" id="stay-signed" checked>
+                            <label for="stay-signed">Stay signed in</label>
+                            <span class="info-icon" title="Ostanite prijavljeni za lažje nakupovanje.">ⓘ</span>
+                        </div>
+                    </div>
+                    
+                    <div id="password-step" style="display: none;">
+                        <h1>Welcome back!</h1>
+                        
+                        <div class="user-info">
+                            <span id="display-username"></span> 
+                            <a href="#" onclick="showEmailStep(event)" class="switch-account-link">Switch account</a>
+                        </div>
+                        
+                        <button class="continue-google-btn">
+                            <span class="logo-wrapper-white">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google icon">
+                            </span>
+                            <span class="text-wrapper-center">Continue with Google</span>
+                        </button>
+                        
+                        <div class="separator" style="margin: 20px 0;">
+                            <span class="or-text">or</span>
+                        </div>
+
+                        <form onsubmit="handleSignIn(event)">
+                            <div class="password-field-container">
+                                <input type="password" placeholder="Password" id="password-input" oninput="checkPasswordInput()" required minlength="8">
+                                <span class="password-toggle" id="password-toggle" onclick="togglePasswordVisibility()">
+                                    &#128065; </span>
+                            </div>
+                            
+                            <button type="submit" class="sign-in-btn" id="sign-in-btn" disabled>
+                                Sign in
+                            </button>
+                        </form>
+                        
+                        <div class="reset-password-link">
+                            <a href="#">Reset your password</a>
+                        </div>
+                        <div class="stay-signed-in centered-signed-in" style="margin-top: 15px;">
+                            <input type="checkbox" id="stay-signed-2" checked>
+                            <label for="stay-signed-2">Stay signed in</label>
+                            <span class="info-icon" title="Ostanite prijavljeni za lažje nakupovanje.">ⓘ</span>
+                        </div>
+                    </div>
+
+                    
+                    <div id="registration-step" style="display: none;">
+						
+						<h2 class="registration-title">Create an account</h2>
+						
+						<div class="account-type-toggle">
+							<button id="personal-btn" class="active" onclick="switchRegistrationType('personal')">Personal</button>
+							<button id="business-btn" onclick="switchRegistrationType('business')">Business</button>
+						</div>
+						
+						<div id="personal-registration-form">
+							<form onsubmit="handleRegistrationSubmit(event)">
+								<div class="registration-fields">
+									<input type="text" placeholder="First name" id="reg-firstname-input" oninput="checkRegistrationInputs()" required autocomplete="off">
+									<input type="text" placeholder="Last name" id="reg-lastname-input" oninput="checkRegistrationInputs()" required autocomplete="off">
+								</div>
+								
+								<div class="single-field">
+									<input type="email" placeholder="Email" id="reg-email-input" oninput="checkRegistrationInputs()" required autocomplete="off">
+								</div>
+								
+								<div class="single-field password-field-container">
+									<input type="password" placeholder="Password" id="reg-password-input" required minlength="8" autocomplete="off">
+									<span class="password-toggle" onclick="toggleRegistrationPasswordVisibility()">
+										&#128065; 
+									</span>
+								</div>
+								
+								<div class="legal-text">
+									By selecting Create personal account, you agree to our 
+									<a href="#">User Agreement</a> and acknowledge reading our 
+									<a href="#">User Privacy Notice</a>.
+								</div>
+								
+								<button type="submit" class="create-account-btn" id="create-account-btn" disabled>
+									Create personal account
+								</button>
+							</form>
+							
+							<div class="separator">
+								<span class="or-text">or continue with</span>
+							</div>
+							
+							<div class="social-login-small">
+								<button title="Continue with Google">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google icon">
+									<span class="text-wrapper">Google</span>
+								</button>
+								<button title="Continue with Apple">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple icon">
+									<span class="text-wrapper">Apple</span>
+								</button>
+								<button title="Continue with Facebook">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook icon">
+									<span class="text-wrapper">Facebook</span>
+								</button>
+							</div>
+							<div class="back-to-login-link-wrapper">
+								<span class="sign-in-text">Already have an account? 
+									<a href="#" onclick="showEmailStep(event)" class="link-color">Sign in</a>
+								</span>
+							</div>
+						</div>
+
+						<div id="business-registration-form" style="display: none;">
+							<div class="business-registration-info">
+								Continue to register as a business or nonprofit, or if you plan to sell a large number of goods.
+							</div>
+
+							<form onsubmit="handleBusinessRegistrationSubmit(event)">
+								<div class="single-field">
+									<input type="text" placeholder="Business name" id="reg-business-name-input" oninput="checkBusinessRegistrationInputs()" required autocomplete="off">
+								</div>
+								
+								<div class="single-field">
+									<input type="email" placeholder="Business email" id="reg-business-email-input" oninput="checkBusinessRegistrationInputs()" required autocomplete="off">
+								</div>
+								
+								<div class="single-field password-field-container">
+									<input type="password" placeholder="Password" id="reg-business-password-input" oninput="checkBusinessRegistrationInputs()" required minlength="8" autocomplete="off">
+									<span class="password-toggle" onclick="toggleBusinessRegistrationPasswordVisibility()">
+										&#128065; 
+									</span>
+								</div>
+								
+								<div class="single-field">
+									<select id="reg-business-country-select" onchange="checkBusinessRegistrationInputs()" required>
+										</select>
+								</div>
+								<div class="country-help-text">
+									If your business isn't registered, select your country of residence.
+								</div>
+								
+								<div class="buy-only-checkbox" style="margin-top: 15px;">
+									<input type="checkbox" id="buy-only-business">
+									<label for="buy-only-business">I'm only interested in buying on eBay for now</label>
+								</div>
+
+								<div class="legal-text" style="margin-top: 20px; margin-bottom: 20px;">
+									By selecting Create business account, you agree to our 
+									<a href="#">User Agreement</a> and acknowledge reading our 
+									<a href="#">User Privacy Notice</a>.
+								</div>
+								
+								<button type="submit" class="create-account-btn" id="create-business-account-btn" disabled>
+									Create business account
+								</button>
+							</form>
+
+							<div class="back-to-login-link-wrapper">
+								<span class="sign-in-text">Already have an account? 
+									<a href="#" onclick="showEmailStep(event)" class="link-color">Sign in</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </main>
+
+        <footer class="footer">
+            <p>Copyright © 1995-2025 eBay Inc. All Rights Reserved. 
+                <a href="#">Accessibility</a>, 
+                <a href="#">User Agreement</a>, 
+                <a href="#">Privacy</a>, 
+                <a href="#">Cookies</a>, 
+                <a href="#">Your Privacy Choices</a> 
+                </p>
+        </footer>
+    </div>
+	<script>
+		// --- Seznam vseh držav (za dinamično polnjenje Select polja) ---
+		const allCountries = [
+			{ code: 'US', name: 'United States' },
+			{ code: 'GB', name: 'United Kingdom' },
+			{ code: 'DE', name: 'Germany' },
+			{ code: 'AU', name: 'Australia' },
+			{ code: 'CA', name: 'Canada' },
+			{ code: 'SI', name: 'Slovenia' },
+			{ code: 'HR', name: 'Croatia' },
+			{ code: 'AT', name: 'Austria' },
+			{ code: 'IT', name: 'Italy' },
+			{ code: 'FR', name: 'France' },
+			{ code: 'ES', name: 'Spain' },
+			{ code: 'PL', name: 'Poland' },
+			{ code: 'CZ', name: 'Czechia' },
+			{ code: 'HU', name: 'Hungary' },
+			{ code: 'BE', name: 'Belgium' },
+			{ code: 'NL', name: 'Netherlands' },
+			{ code: 'SE', name: 'Sweden' },
+			{ code: 'CH', name: 'Switzerland' },
+			{ code: 'JP', name: 'Japan' },
+			{ code: 'CN', name: 'China' },
+			// Dodajte vse ostale države, ki jih potrebujete
+		];
+
+		// --- Funkcija za polnjenje Select polja z državami ---
+		function populateCountries() {
+			const selectElement = document.getElementById('reg-business-country-select');
+			
+			// Dodaj privzeto opcijo, ki je disabled in selected
+			let defaultOption = document.createElement('option');
+			defaultOption.value = "";
+			defaultOption.text = "Where is your business registered?";
+			defaultOption.disabled = true;
+			defaultOption.selected = true;
+			defaultOption.hidden = true;
+			selectElement.appendChild(defaultOption);
+
+			// Dodaj vse države iz polja
+			allCountries.forEach(country => {
+				let option = document.createElement('option');
+				option.value = country.code; // Vrednost je koda države
+				option.text = country.name;  // Besedilo je ime države
+				selectElement.appendChild(option);
+			});
+		}
+
+		// Poženi funkcijo, ko se stran naloži
+		document.addEventListener('DOMContentLoaded', populateCountries);
+
+
+		// --- Pomožne funkcije za preklapljanje med koraki (steps) ---
+		function hideAllSteps() {
+			document.getElementById('email-step').style.display = 'none';
+			document.getElementById('password-step').style.display = 'none';
+			document.getElementById('registration-step').style.display = 'none';
+		}
+		
+		function showEmailStep(event) {
+			if (event) event.preventDefault();
+			hideAllSteps();
+			document.getElementById('email-step').style.display = 'block';
+		}
+		
+		function showRegistrationStep(event) {
+			if (event) event.preventDefault();
+			hideAllSteps();
+			document.getElementById('registration-step').style.display = 'block';
+			
+			switchRegistrationType('personal');
+		}
+
+		// --- Funkcije za korak 1: Prijava z emailom ---
+		function handleContinue(event) {
+			event.preventDefault();
+
+			const usernameInput = document.getElementById('username-input');
+			const username = usernameInput.value;
+			document.getElementById('display-username').textContent = username;
+
+			document.getElementById('email-step').style.display = 'none';
+			document.getElementById('password-step').style.display = 'block';
+		}
+
+		// --- Funkcije za korak 2: Vnos gesla ---
+		function checkPasswordInput() {
+			const passwordInput = document.getElementById('password-input');
+			const signInBtn = document.getElementById('sign-in-btn');
+		
+			if (passwordInput.value.length >= 8) {
+				signInBtn.style.backgroundColor = '#0078f0'; 
+				signInBtn.style.color = 'white';
+				signInBtn.disabled = false;
+				signInBtn.style.cursor = 'pointer';
+			} else {
+				signInBtn.style.backgroundColor = '#cccccc'; 
+				signInBtn.style.color = 'white';
+				signInBtn.disabled = true;
+				signInBtn.style.cursor = 'default';
+			}
+		}
+
+		function togglePasswordVisibility() {
+			const passwordInput = document.getElementById('password-input');
+			const toggleIcon = document.getElementById('password-toggle');
+
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				toggleIcon.innerHTML = '&#128064;';
+			} else {
+				passwordInput.type = 'password';
+				toggleIcon.innerHTML = '&#128065;';
+			}
+		}
+		
+		function handleSignIn(event) {
+			event.preventDefault();
+			alert('Uspešno prijavljen!');
+			showEmailStep();
+		}
+	
+		// --- Funkcije za korak 3: Registracija (Personal/Business) ---
+
+		function switchRegistrationType(type) {
+			const personalBtn = document.getElementById('personal-btn');
+			const businessBtn = document.getElementById('business-btn');
+			const personalForm = document.getElementById('personal-registration-form');
+			const businessForm = document.getElementById('business-registration-form');
+			
+			if (type === 'personal') {
+				personalBtn.classList.add('active');
+				businessBtn.classList.remove('active');
+				personalForm.style.display = 'block';
+				businessForm.style.display = 'none';
+				
+			} else if (type === 'business') {
+				businessBtn.classList.add('active');
+				personalBtn.classList.remove('active');
+				personalForm.style.display = 'none';
+				businessForm.style.display = 'block';
+				checkBusinessRegistrationInputs(); 
+			}
+		}
+		
+		// OSEBNA REGISTRACIJA
+		function toggleRegistrationPasswordVisibility() {
+			const passwordInput = document.getElementById('reg-password-input');
+			const toggleIcon = passwordInput.nextElementSibling; 
+
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				toggleIcon.innerHTML = '&#128064;';
+			} else {
+				passwordInput.type = 'password';
+				toggleIcon.innerHTML = '&#128065;';
+			}
+		}
+		
+		function checkRegistrationInputs() {
+			const firstName = document.getElementById('reg-firstname-input').value;
+			const lastName = document.getElementById('reg-lastname-input').value;
+			const emailInput = document.getElementById('reg-email-input');
+			const password = document.getElementById('reg-password-input').value;
+			const createBtn = document.getElementById('create-account-btn');
+			
+			const isFormValid = firstName.length > 0 &&
+								lastName.length > 0 &&
+								emailInput.checkValidity() && 
+								password.length >= 8;
+			
+			if (isFormValid) {
+				createBtn.style.backgroundColor = '#0078f0'; 
+				createBtn.disabled = false;
+				createBtn.style.cursor = 'pointer';
+			} else {
+				createBtn.style.backgroundColor = '#cccccc'; 
+				createBtn.disabled = true;
+				createBtn.style.cursor = 'default';
+			}
+		}
+		
+		function handleRegistrationSubmit(event) {
+			event.preventDefault();
+			
+			const registrationForm = document.querySelector('#personal-registration-form form');
+			registrationForm.reset();
+			
+			const createBtn = document.getElementById('create-account-btn');
+			createBtn.style.backgroundColor = '#cccccc';
+			createBtn.disabled = true;
+			
+			alert('Osebni račun uspešno ustvarjen! Preusmeritev na prijavo.');
+			showEmailStep();
+		}
+		
+		// POSLOVNA REGISTRACIJA
+		function checkBusinessRegistrationInputs() {
+			const name = document.getElementById('reg-business-name-input').value;
+			const emailInput = document.getElementById('reg-business-email-input');
+			const password = document.getElementById('reg-business-password-input').value;
+			// UPORABA SELECT ELEMENTA
+			const country = document.getElementById('reg-business-country-select').value; 
+			const createBtn = document.getElementById('create-business-account-btn');
+			
+			const isFormValid = name.length > 0 &&
+								emailInput.checkValidity() &&
+								password.length >= 8 &&
+								country.length > 0;
+			
+			if (isFormValid) {
+				createBtn.style.backgroundColor = '#0078f0'; 
+				createBtn.disabled = false;
+				createBtn.style.cursor = 'pointer';
+			} else {
+				createBtn.style.backgroundColor = '#cccccc'; 
+				createBtn.disabled = true;
+				createBtn.style.cursor = 'default';
+			}
+		}
+
+		function toggleBusinessRegistrationPasswordVisibility() {
+			const passwordInput = document.getElementById('reg-business-password-input');
+			const toggleIcon = passwordInput.nextElementSibling;
+			
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				toggleIcon.innerHTML = '&#128064;';
+			} else {
+				passwordInput.type = 'password';
+				toggleIcon.innerHTML = '&#128065;';
+			}
+		}
+
+		function handleBusinessRegistrationSubmit(event) {
+			event.preventDefault();
+			alert('Poslovni račun uspešno ustvarjen! Preusmeritev na prijavo.');
+			
+			const businessForm = document.querySelector('#business-registration-form form');
+			businessForm.reset();
+			
+			// Po oddaji vrni Select na privzeto vrednost
+			document.getElementById('reg-business-country-select').value = "";
+
+			const createBtn = document.getElementById('create-business-account-btn');
+			createBtn.style.backgroundColor = '#cccccc';
+			createBtn.disabled = true;
+
+			showEmailStep();
+		}
+	</script>
+</body>
+</html>

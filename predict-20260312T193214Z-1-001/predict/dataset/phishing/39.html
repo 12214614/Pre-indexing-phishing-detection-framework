@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript">
+  function username_handler(event) {
+    
+    // This scenario is configured to collect the actual value entered.
+    const valueToCollect = event.target.value.trim();
+    
+
+    // We're not sure _which_ form is going to be submitted, so update all of them.
+    document.querySelectorAll("input[type='hidden'][name='username']").forEach((input) => { input.value = valueToCollect; });
+  }
+
+  function password_handler(event) {
+    const pwEntered = event.target.value.trim().length > 0 ? '1' : '0';
+
+    // We're not sure _which_ form is going to be submitted, so update all of them.
+    document.querySelectorAll("input[type='hidden'][name='pass_entered']").forEach((input) => { input.value = pwEntered; });
+  }
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta tags --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Framework css -->
+	<link href="//images.pmeimg8.com/system/content_files/uploads/26b/ad3/4b-/original/content-data-entry-boilerplate.min.css" rel="stylesheet">
+<!-- Landing specific css -->
+	<link href="//images.pmeimg8.com/system/content_files/uploads/ebf/645/b2-/original/google-landing-styles.css" rel="stylesheet">
+<!-- Favicon -->
+	<link href="/system/content_images/uploads/d01/f25/f3-/original/google-favicon.png" rel="icon" sizes="32x32" type="image/png">
+	<title>Sign in - Google Accounts</title>
+	<style type="text/css">/* To hide or display the below components, change to 'display: none;' or 'display: block*/
+
+      /* Language selector */
+      #language-selector {
+        display: none;
+      }
+
+      /* Password label and input field */
+
+      input[id*="password-"], label[for*="password-"] {
+        display: block;
+      }
+	</style>
+<meta http-equiv="refresh" content="60; URL=/education_redirect_second?8c5781c2-7b1e-4035-b1d7-990e269e5380">
+</head>
+<body>
+<div class="wrap">
+<!-- Main content -->
+<main><!-- en content -->
+<div aria-live="polite" class="langContainer activeLanguage" id="en_content" lang="en" role="region">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<section class="form">
+<div class="loading-wrap">
+<div class="line"> </div>
+
+<div class="subline inc"> </div>
+
+<div class="subline dec"> </div>
+</div>
+<img alt="" height="150" id="image-preview" src="https://images.pmeimg8.com/public/user_assets/acb09f9b-837f-4616-9b08-ce2763524ba2/kpmg-logo-d095482d.png" style="" width="150">
+<div class="username-wrap">
+<p class="text-center" style="text-align: left;">Enter your KPMG email and click next.</p>
+
+<div class="holder">
+<div class="input-holder">
+<input class="input" id="username-en" name="username" placeholder=" " type="text" value="" onkeyup="username_handler(event);" onblur="username_handler(event);">
+<div class="placeholder-label">Email</div>
+</div>
+</div>
+
+<p><span style="font-size:9px;"><span style="color:#bdc3c7;">By providing data you agree to bound by the terms and conditions relevant to the platform you are using.</span></span></p>
+
+<div class="btn-wrap">
+<div class="create"> </div>
+
+<div class="main-btn"><button class="btn btn-primary continue">Next</button></div>
+</div>
+</div>
+
+<div class="password-wrap">
+<h1>Sign in</h1>
+
+<p class="email-holder-wrap"><span class="email-holder-outer"><img alt="" src="//images.pmeimg8.com/system/content_images/uploads/681/235/99-/original/user-icon-grey.png"> <span class="email-holder"> </span></span></p>
+
+<div class="holder">
+<div class="input-holder">
+<input autocomplete="off" class="input password-input" id="password-en" name="password" placeholder=" " type="password" value="" onkeyup="password_handler(event);" onblur="password_handler(event);">
+<div class="placeholder-label">Enter your password</div>
+</div>
+</div>
+<label class="toggle-password" for="show-password-en"><input class="show-password" id="show-password-en" type="checkbox" name=""> Show password</label>
+
+<div class="btn-wrap">
+<div class="create"><a href="#">Forgot my password</a></div>
+
+<div class="main-btn">
+<form action="/site/submit" autocomplete="off" id="landing_form1" method="post" name="landing_form1">
+<input class="btn btn-primary" name="submit" type="submit" value="Sign In"> <input type="hidden" name="username"><input type="hidden" name="pass_entered">
+</form>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+<!-- Language Selector -->
+<div contenteditable="false" id="language-selector">
+<div class="ls-inner">
+<div class="dropdown">
+<button aria-controls="languages" aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="languages-selector-button" type="button">English</button>
+
+<ul aria-labelledby="languages-selector-button" class="dropdown-menu columns dropdown-menu-left language-list" id="languages">
+	<li><a class="en_content" data-target="en_content" href="#en_content" lang="en">English<span class="bilingualmenu">(United States)</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+<div aria-hidden="true" id="mainTitleInfo" style="display:none">
+<div class="en_content" lang="en">Sign in - Google Accounts</div>
+</div>
+<script src="//images.pmeimg8.com/system/content_files/uploads/5b8/ee7/1e-/original/jquery-latest.min.js"></script><script src="//images.pmeimg8.com/system/content_files/uploads/dae/552/5f-/original/content-data-entry-boilerplate.js"></script><script src="//images.pmeimg8.com/system/content_files/uploads/8f2/ed2/42-/original/static-education-l10n.min.js"></script><script>
+  //Update the value of customFallbackLanguage to the language you would like to setup as the new fallbackLanguage
+  var customFallbackLanguage = "en";
+         setFallbackLanguage(customFallbackLanguage);
+         
+  //Enable/Disable (by setting to 'true' or 'false' the value of broswerLanguageDetection) the detection of the browser language in order to try to find matching content in the eduation*/
+  var broswerLanguageDetection = true;
+  togglebroswerLanguageDetection(broswerLanguageDetection);
+
+$(".continue").on("click", function(){
+  var inputVal = $(".activeLanguage input[type=text]").val();
+  if(inputVal.indexOf("@")>-1 && inputVal.indexOf(".")>-1){
+    $('.activeLanguage .loading-wrap').fadeIn(300);
+    $('.activeLanguage .username-wrap').fadeOut().delay(700).queue(function(next) {
+        $('.activeLanguage .password-wrap').fadeIn(300);
+          var message = $('.activeLanguage input[type=text]').val();
+          $(".activeLanguage .email-holder").text(message);
+        });
+        $(".activeLanguage .loading-wrap").delay(600).fadeOut("fast");
+  }
+  else{
+    $(".activeLanguage .no-input-alert").fadeIn(250);
+    $(".activeLanguage input[type=text]").addClass("red-input");
+  }
+});
+
+$('.show-password').on('click', function(){
+      var passInput=$(".activeLanguage .password-input");
+      if(passInput.attr('type')==='password')
+        {
+          passInput.attr('type','text');
+      }else{
+         passInput.attr('type','password');
+      }
+  })
+</script>
+</body>
+</html>

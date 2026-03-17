@@ -1,0 +1,24 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Node dependencies and build outputs
+node_modules/
+build/
+dist/
+
+# Logs
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+
+# Archives and large bundles
+*.zip
+.*.zip

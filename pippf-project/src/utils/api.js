@@ -1,8 +1,12 @@
-const BASE_URL = (process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8001/api/core').replace(/\/$/, '');
+const DEFAULT_BASE_URL = process.env.NODE_ENV === 'development'
+  ? 'http://127.0.0.1:8001/api/core'
+  : '/api/core';
+
+export const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || DEFAULT_BASE_URL).replace(/\/$/, '');
 
 export const verifyUrl = async (url) => {
   try {
-    const response = await fetch(`${BASE_URL}/submit-url/`, {
+    const response = await fetch(`${API_BASE_URL}/submit-url/`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -23,7 +27,7 @@ export const verifyUrl = async (url) => {
 
 export const getDashboardStats = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/dashboard/`);
+    const response = await fetch(`${API_BASE_URL}/dashboard/`);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
@@ -36,7 +40,7 @@ export const getDashboardStats = async () => {
 
 export const getUrlList = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/url-list/`);
+    const response = await fetch(`${API_BASE_URL}/url-list/`);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }

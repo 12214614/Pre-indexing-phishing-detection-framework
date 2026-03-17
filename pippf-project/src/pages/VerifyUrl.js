@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, Activity, Lock, Unlock, Clock } from 'lucide-react';
 import { getStatusColor, getRiskColor } from '../utils/helpers';
-import { verifyUrl } from '../utils/api';
+import { API_BASE_URL, verifyUrl } from '../utils/api';
 import StatusBadge from '../components/StatusBadge';
 
 const VerifyUrl = () => {
@@ -33,7 +33,7 @@ const VerifyUrl = () => {
       });
     } catch (err) {
       console.error('Verification failed:', err);
-      setError('Backend is unreachable. Make sure the Django server is running at http://127.0.0.1:8001');
+      setError(`Backend is unreachable. Check REACT_APP_API_BASE_URL. Current API base: ${API_BASE_URL}`);
     } finally {
       setIsVerifying(false);
     }

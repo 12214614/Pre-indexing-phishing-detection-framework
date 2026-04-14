@@ -15,6 +15,12 @@ dist/
 # Logs
 *.log
 
+# Local runtime files
+.env
+*.env
+db.sqlite3
+*.sqlite3
+
 # OS/editor
 .DS_Store
 Thumbs.db

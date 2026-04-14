@@ -34,6 +34,13 @@ class SubmitURLAPIView(APIView):
         ).first()
 
         if existing:
+            # Extract features to get domain age even for cached URLs
+            try:
+                features = extract_all_features(website_url)
+                domain_age = features.get("domain_age_days", -1)
+            except:
+                domain_age = -1
+            
             try:
                 analysis = URLAnalysis.objects.get(crawled_url=existing)
                 return Response({
@@ -41,13 +48,16 @@ class SubmitURLAPIView(APIView):
                     "website_url": existing.website_url,
                     "prediction": analysis.prediction,
                     "confidence": analysis.confidence_score,
-                    "status": existing.status
+                    "status": existing.status,
+                    "domain_age_days": domain_age,
+                    "reason": analysis.reason
                 }, status=status.HTTP_200_OK)
 
             except URLAnalysis.DoesNotExist:
                 return Response({
                     "message": "URL already submitted but not analyzed yet",
-                    "status": existing.status
+                    "status": existing.status,
+                    "domain_age_days": domain_age
                 }, status=status.HTTP_200_OK)
 
         # -----------------------------------------
@@ -148,6 +158,7 @@ class SubmitURLAPIView(APIView):
             "prediction":  final_label,
             "confidence":  probability,
             "status":      crawled.status,
+            "domain_age_days": features.get("domain_age_days", -1),
             "stage1_ml":   ml_label,
             "stage1_model": ml_model_name,
             "stage1_threshold": ml_threshold,

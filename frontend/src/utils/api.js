@@ -1,8 +1,14 @@
 const DEFAULT_BASE_URL = process.env.NODE_ENV === 'development'
-  ? 'http://127.0.0.1:8001/api/core'
+  ? 'http://127.0.0.1:8000/api/core'
   : '/api/core';
 
-export const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || DEFAULT_BASE_URL).replace(/\/$/, '');
+const configuredApiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+const hasPlaceholder = configuredApiBaseUrl && configuredApiBaseUrl.includes('your-backend-domain');
+const resolvedApiBaseUrl = configuredApiBaseUrl && !hasPlaceholder
+  ? configuredApiBaseUrl
+  : DEFAULT_BASE_URL;
+
+export const API_BASE_URL = resolvedApiBaseUrl.replace(/\/$/, '');
 
 export const verifyUrl = async (url) => {
   try {

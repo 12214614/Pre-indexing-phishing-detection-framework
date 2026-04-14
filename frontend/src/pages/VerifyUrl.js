@@ -22,12 +22,13 @@ const VerifyUrl = () => {
       const ssl = urlInput.startsWith('https://');
       const urlLen = urlInput.length;
       const complexity = urlLen >= 60 ? 'High' : urlLen >= 30 ? 'Medium' : 'Low';
+      const domainAge = data.domain_age_days >= 0 ? data.domain_age_days : 'Unknown';
       setVerificationResult({
         url: urlInput,
         status: mappedStatus,
         risk,
         ssl,
-        domainAge: 0,
+        domainAge,
         complexity,
         timestamp: new Date().toLocaleString(),
       });
@@ -151,7 +152,9 @@ const VerifyUrl = () => {
                 <span className="text-sm font-semibold text-slate-400">Domain Age</span>
               </div>
               <p className="text-lg font-bold text-white">
-                {verificationResult.domainAge} days
+                {typeof verificationResult.domainAge === 'number' 
+                  ? `${verificationResult.domainAge} days` 
+                  : verificationResult.domainAge}
               </p>
             </div>
             

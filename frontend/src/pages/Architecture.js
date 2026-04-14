@@ -17,20 +17,14 @@ const Architecture = () => {
     },
     {
       step: '3',
-      title: 'Stage-2: JavaScript Malicious Behavior Analysis',
-      description: 'Simultaneous analysis of JavaScript code for malicious behaviors including obfuscation, suspicious API calls, data exfiltration attempts, and dynamic code execution',
-      color: 'purple'
-    },
-    {
-      step: '4',
-      title: 'Stage-3: DOM Rendering & NCD Similarity Analysis',
-      description: 'Crawler renders webpage using real browser engine to obtain fully executed HTML DOM. Performs similarity-based phishing detection using Normalized Compression Distance (NCD) against known phishing and legitimate prototypes',
+      title: 'Stage-2: DOM Rendering & NCD Similarity Analysis',
+      description: 'Crawler renders webpage to obtain executed HTML DOM and extracts script content for structural similarity matching. Performs phishing detection using Normalized Compression Distance (NCD) against known phishing and legitimate prototypes',
       color: 'pink'
     },
     {
-      step: '5',
+      step: '4',
       title: 'Consensus-Based Decision',
-      description: 'Final decision uses consensus rule: All stages agree = LEGITIMATE (indexed) / All stages agree = PHISHING (blocked) / Disagreement = SUSPICIOUS (flagged for review)',
+      description: 'Final decision uses consensus rule: Stage-1 and Stage-2 agree = LEGITIMATE (indexed) / Stage-1 and Stage-2 agree = PHISHING (blocked) / Disagreement = SUSPICIOUS (flagged for review)',
       color: 'emerald'
     }
   ];
@@ -39,10 +33,9 @@ const Architecture = () => {
     'URL lexical analysis (Stage-1)',
     'Domain reputation scoring (Stage-1)',
     'SSL certificate validation (Stage-1)',
-    'JavaScript obfuscation detection (Stage-2)',
-    'Malicious API call analysis (Stage-2)',
-    'DOM rendering & NCD similarity (Stage-3)',
-    'Visual phishing prototype matching (Stage-3)',
+    'DOM rendering & NCD similarity (Stage-2)',
+    'JavaScript similarity fingerprinting (Stage-2)',
+    'Visual phishing prototype matching (Stage-2)',
     'Consensus-based multi-stage voting'
   ];
 
@@ -128,17 +121,10 @@ const Architecture = () => {
             </div>
             <div className="p-4 bg-slate-950 rounded-lg border border-slate-700">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-bold text-white">Stage-2: JavaScript Behavior Analysis</span>
-                <span className="text-emerald-400 font-bold">94.2%</span>
-              </div>
-              <p className="text-sm text-slate-400">Dynamic analysis of malicious JavaScript patterns and behaviors</p>
-            </div>
-            <div className="p-4 bg-slate-950 rounded-lg border border-slate-700">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-bold text-white">Stage-3: NCD Similarity Detection</span>
+                <span className="font-bold text-white">Stage-2: NCD DOM + JavaScript Similarity</span>
                 <span className="text-emerald-400 font-bold">97.9%</span>
               </div>
-              <p className="text-sm text-slate-400">Normalized Compression Distance against known phishing prototypes</p>
+              <p className="text-sm text-slate-400">Normalized Compression Distance against known phishing and legitimate prototypes</p>
             </div>
           </div>
         </div>
@@ -151,10 +137,10 @@ const Architecture = () => {
           <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
             <div className="flex items-center gap-3 mb-2">
               <CheckCircle className="w-6 h-6 text-emerald-400" />
-              <h4 className="text-lg font-bold text-emerald-400">All Stages → LEGITIMATE</h4>
+              <h4 className="text-lg font-bold text-emerald-400">Stage-1 + Stage-2 → LEGITIMATE</h4>
             </div>
             <p className="text-slate-300 text-sm">
-              If all stages (Stage-1, Stage-2, Stage-3) classify the website as legitimate, 
+              If both detection stages (Stage-1 and Stage-2) classify the website as legitimate, 
               it is <span className="font-bold text-emerald-400">indexed and made searchable</span>.
             </p>
           </div>
@@ -162,10 +148,10 @@ const Architecture = () => {
           <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
             <div className="flex items-center gap-3 mb-2">
               <XCircle className="w-6 h-6 text-red-400" />
-              <h4 className="text-lg font-bold text-red-400">All Stages → PHISHING</h4>
+              <h4 className="text-lg font-bold text-red-400">Stage-1 + Stage-2 → PHISHING</h4>
             </div>
             <p className="text-slate-300 text-sm">
-              If all stages classify the website as phishing, 
+              If both detection stages classify the website as phishing, 
               it is <span className="font-bold text-red-400">blocked entirely and not indexed</span>.
             </p>
           </div>
